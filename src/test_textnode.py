@@ -26,11 +26,5 @@ class TestTextNode(unittest.TestCase):
 
         self.assertNotEqual(node, node2)
 
-    def test_equal_when_url_is_None(self):
-        node = TextNode("This is a text node", "bold", None)
-
-        self.assertRaises(TypeError)
-
-
 if __name__ == "__main__":
     unittest.main()

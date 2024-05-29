@@ -1,5 +1,5 @@
 class HtmlNode:
-    def __init__(self = None, tag = None, value= None, children = None, props = None):
+    def __init__(self, tag = None, value= None, children = None, props = None):
         self.tag = tag
         self.value = value
         self.children = children
@@ -23,3 +23,19 @@ class HtmlNode:
 
         props = self.props_to_Html()
         return f"HtmlNode({self.tag}, {self.value}, {self.children}, {props})"
+    
+
+
+class LeafNode(HtmlNode):
+    def __init__(self, tag, value, props):
+        super().__init__(tag, value, props)
+        if self.value is None:
+            raise ValueError("LeafNode is missing required value")
+        
+
+    def to_html(self):
+        if self.tag is None:
+            return self.value
+        
+        return f"<{self.tag}{self.props_to_Html()}>{self.value}<\{self.tag}>"
+
