@@ -1,6 +1,7 @@
 from textnode import TextNode
 from htmlnode import HtmlNode
 from leafnode import LeafNode
+from parentnode import ParentNode
 
 
 def main():
@@ -14,9 +15,16 @@ def main():
 
     leaf = LeafNode("p", "leaf paragraph", {"href": "https://www.google.com", "target": "_blank"}) 
 
+    parent_node = ParentNode("p", [LeafNode("b", "Bold text"), LeafNode(None, "Normal text"), LeafNode("i", "italic text"), LeafNode(None, "Normal text")])
+
+    #result = parent_node.to_html()
+
     #print(text_node)
     #print(html_node)
-    print(leaf)
+    #print(leaf)
+
+    print(parent_node.to_html())
+    
 
 
 if __name__ == '__main__':

@@ -1,12 +1,12 @@
 import unittest
 
-from htmlnode import HtmlNode
 from leafnode import LeafNode
 
 class TestLeafNode(unittest.TestCase):
     def test_throw_on_none_value(self):        
         with self.assertRaises(ValueError):
             node = LeafNode("div", None, {"href": "https://www.google.com", "target": "_blank"})
+            node.to_html()
 
     def test_to_hmtl(self):        
         leaf = LeafNode("p", "leaf paragraph", {"href": "https://www.google.com", "target": "_blank"})        

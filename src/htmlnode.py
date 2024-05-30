@@ -10,7 +10,7 @@ class HtmlNode:
 
     def props_to_Html(self):
         result = ""
-        
+                
         if self.props is None:
             return result
 
@@ -20,22 +20,6 @@ class HtmlNode:
         return result
         
     def __repr__(self):
+        return f"HtmlNode({self.tag}, {self.value}, {self.children}, {self.props_to_Html()})"
 
-        props = self.props_to_Html()
-        return f"HtmlNode({self.tag}, {self.value}, {self.children}, {props})"
-    
-
-
-class LeafNode(HtmlNode):
-    def __init__(self, tag, value, props):
-        super().__init__(tag, value, props)
-        if self.value is None:
-            raise ValueError("LeafNode is missing required value")
-        
-
-    def to_html(self):
-        if self.tag is None:
-            return self.value
-        
-        return f"<{self.tag}{self.props_to_Html()}>{self.value}<\{self.tag}>"
 
